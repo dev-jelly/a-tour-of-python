@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/a-tour-of-python/static/css/main.343968ec.chunk.css",
+    "main.js": "/a-tour-of-python/static/js/main.b4a2c769.chunk.js",
+    "main.js.map": "/a-tour-of-python/static/js/main.b4a2c769.chunk.js.map",
+    "runtime-main.js": "/a-tour-of-python/static/js/runtime-main.03e70d4e.js",
+    "runtime-main.js.map": "/a-tour-of-python/static/js/runtime-main.03e70d4e.js.map",
+    "static/js/2.4404a2e5.chunk.js": "/a-tour-of-python/static/js/2.4404a2e5.chunk.js",
+    "static/js/2.4404a2e5.chunk.js.map": "/a-tour-of-python/static/js/2.4404a2e5.chunk.js.map",
+    "static/js/3.1cb1c42e.chunk.js": "/a-tour-of-python/static/js/3.1cb1c42e.chunk.js",
+    "static/js/3.1cb1c42e.chunk.js.map": "/a-tour-of-python/static/js/3.1cb1c42e.chunk.js.map",
+    "index.html": "/a-tour-of-python/index.html",
+    "static/css/main.343968ec.chunk.css.map": "/a-tour-of-python/static/css/main.343968ec.chunk.css.map",
+    "static/js/2.4404a2e5.chunk.js.LICENSE.txt": "/a-tour-of-python/static/js/2.4404a2e5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.03e70d4e.js",
+    "static/js/2.4404a2e5.chunk.js",
+    "static/css/main.343968ec.chunk.css",
+    "static/js/main.b4a2c769.chunk.js"
+  ]
+}
