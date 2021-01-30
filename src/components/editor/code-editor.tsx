@@ -1,19 +1,41 @@
 import AceEditor from "react-ace";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../index.css";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-github";
 import getConsole from "../../utils/get-console";
 
-export default function CodeEditor() {
-  const [code, setCode] = useState("");
+type CodeEditorProps = {
+  initialCode: string;
+};
+
+export default function CodeEditor({ initialCode }: CodeEditorProps) {
+  const win = window as any;
+
+  const [code, setCode] = useState(initialCode);
   const [result, setResult] = useState("");
+
   const onChange = (value: string) => {
     setCode(value);
   };
+  useEffect(() => {
+    setResult(win.brythonConsole);
+  }, [win, win.brythonConsole]);
 
   const run = () => {
-    setResult(getConsole(code));
+    const console = getConsole(code);
+    setResult(console);
+
+    setTimeout(() => {
+      setResult(win.brythonConsole);
+    }, 100);
+  };
+
+  document.onkeydown = (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+      e.preventDefault();
+      run();
+    }
   };
 
   return (
@@ -30,6 +52,7 @@ export default function CodeEditor() {
         mode="python"
         theme="github"
         onChange={onChange}
+        value={code}
         name="python-code"
         editorProps={{ $blockScrolling: false }}
       />

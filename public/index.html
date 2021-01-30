@@ -27,9 +27,11 @@
     <title>React App</title>
     <script src="https://cdn.jsdelivr.net/npm/brython@3.9.1/brython.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/brython@3.9.1/brython_stdlib.js"></script>
+
   </head>
-  <body onload="">
+  <body >
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="console"></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -41,5 +43,69 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script type="text/python">
+
+from browser import window
+import sys
+import time
+import binascii
+
+import tb as traceback
+import javascript
+
+from browser import document as doc, window, alert, bind, html
+
+
+output = ''
+editor = doc['python-code']
+
+class cOutput:
+    encoding = 'utf-8'
+
+    def __init__(self):
+        self.cons = doc["console"]
+        self.buf = ''
+
+    def write(self, data):
+        self.buf += str(data)
+
+    def flush(self):
+        self.cons.value += self.buf
+        self.buf = ''
+
+    def __len__(self):
+        return len(self.buf)
+
+if "console" in doc:
+    cOut = cOutput()
+    sys.stdout = cOut
+    sys.stderr = cOut
+
+
+def run(*args):
+    global output
+    doc["console"].value = ''
+    src = window.pythonCode
+    window.brythonConsole =''
+    t0 = time.perf_counter()
+    try:
+        ns = {'__name__':'__main__'}
+        exec(src, ns)
+        state = 1
+    except Exception as exc:
+        traceback.print_exc(file=sys.stderr)
+        state = 0
+    sys.stdout.flush()
+    output = doc["console"].value + '\n<completed in %6.2f ms>' % ((time.perf_counter() - t0) * 1000.0)
+    window.brythonConsole = output
+    return state
+
+
+def to_str(xx):
+    return str(xx)
+
+run()
+    </script>
+
   </body>
 </html>
