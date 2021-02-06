@@ -33,7 +33,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "PUBLIC_URL=http://localhost:3000 craco start",
     "build": "craco build",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
