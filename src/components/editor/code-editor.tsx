@@ -1,5 +1,5 @@
 import AceEditor from "react-ace";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "../../index.css";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-github";
@@ -10,38 +10,38 @@ type CodeEditorProps = {
 };
 
 export default function CodeEditor({ initialCode }: CodeEditorProps) {
-  const win = window as any;
+    const win = window as any;
 
-  const [code, setCode] = useState(initialCode);
-  const [result, setResult] = useState("");
+    const [code, setCode] = useState(initialCode);
+    const [result, setResult] = useState(" ");
 
-  const onChange = (value: string) => {
-    setCode(value);
-  };
-  useEffect(() => {
-    setResult(win.brythonConsole);
-  }, [win, win.brythonConsole]);
+    const onChange = (value: string) => {
+        setCode(value);
+    };
 
-  const run = () => {
-    const console = getConsole(code);
-    setResult(console);
+    const run = async () => {
+        win.brythonConsole = 'in processing...';
+        await (async () => setResult(getConsole(code)))();
+    };
 
-    setTimeout(() => {
-      setResult(win.brythonConsole);
-    }, 100);
-  };
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setResult(win.brythonConsole)
+        }, 250);
+        return () => clearInterval(interval);
+    }, []);
 
-  document.onkeydown = (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === "s") {
-      e.preventDefault();
-      run();
-    }
-  };
+    document.onkeydown = async (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+            e.preventDefault();
+            await run()
+        }
+    };
 
-  return (
-    <div className={"space-y-0.5"}>
-      <button
-        className={"m-1 text-xl bg-blue-600 py-1 text-white w-20"}
+    return (
+        <div className={"space-y-0.5"}>
+            <button
+                className={"m-1 text-xl bg-blue-600 py-1 text-white w-20"}
         onClick={run}
       >
         실행

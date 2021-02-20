@@ -1,5 +1,5 @@
 # 자료형
-
+## 변수 선언
 파이썬에서 어떻게 변수를 선언할 수 있을까요? 파이썬은 별도의 변수 선언 키워드가 존재하지 않습니다. 아래의 코드를 실행해보세요.
 
 ```python
@@ -10,8 +10,11 @@ print(this_is_number)
 print(this_is_string)
 ```
 
-파이썬은 내장 타입들이([Built-in Types](https://docs.python.org/3/library/stdtypes.html)) 존재하지만, 기본적으로 동적 타입을 가집니다. 다른 언어라면 아래와 갈은
-코드는 에러가 발생하겠지만 파이썬에서는 문제가 없죠.
+파이썬은 내장 타입들이([Built-in Types](https://docs.python.org/3/library/stdtypes.html)) 존재하지만 다 다루진 않습니다.
+
+## 동적 타입(Dynamic types)
+
+파이썬의 변수는 동적 타입입니다.. 다른 언어라면 아래와 갈은 코드는 에러가 발생하겠지만 파이썬에서는 문제가 없죠.
 
 ```python
 this_is_number = 100
