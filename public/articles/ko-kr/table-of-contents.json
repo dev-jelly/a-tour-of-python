@@ -1,0 +1,32 @@
+{
+  "intro": {
+    "title": "안녕 세계!",
+    "children": [],
+    "next": "data-types"
+  },
+  "data-types": {
+    "title": "자료형!",
+    "children": {
+      "list": {
+        "title": "리스트",
+        "children": {
+          "access-element": {
+            "title": "요소에 접근하기",
+            "next": "list-slicing"
+          },
+          "list-slicing": {
+            "title": "리스트 슬라이싱",
+            "next": ""
+          }
+        },
+        "next": "access-element"
+      },
+      "number": {
+        "title": "",
+        "children": {},
+        "next": ""
+      }
+    },
+    "next": "list"
+  }
+}
