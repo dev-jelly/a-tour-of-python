@@ -7,8 +7,8 @@ number_list = [2, 4, 8, 16, 32]
 
 # 대부분의 언어와 마찬가지로 
 # 파이썬에선 0부터 인덱스가 시작됩니다. 
-print("0, 첫번째 요소", number[0])
-print("3, 네번째 요소", number[3])
+print("0, 첫번째 요소", number_list[0])
+print("3, 네번째 요소", number_list[3])
 ```
 
 파이썬에서는 음수(-)로도 요소에 접근이 가능한데, -를 사용할 시 맨 뒤에서 부터 인덱스를 셉니다.
@@ -16,7 +16,7 @@ print("3, 네번째 요소", number[3])
 ```python
 number_list = [2, 4, 8, 16, 32]
 
-print("-2, 마지막에서 두번째 요소", number[-2])
+print("-2, 마지막에서 두번째 요소", number_list[-2])
 ```
 
 [다음으로](#data-types/list/list-slicing)

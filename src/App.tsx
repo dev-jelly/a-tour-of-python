@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import CodeEditor from "./components/editor/code-editor";
 import NavBar from "./components/layout/nav-bar";
 import gfm from "remark-gfm";
 import Markdown from "./components/article/markdown";
-import {useMarkdown} from "./utils/get-markdown";
-import {useCode} from "./utils/get-code";
+import { useMarkdown } from "./utils/get-markdown";
+import { useCode } from "./utils/get-code";
+import { TableOfContents } from "./components/article/table-of-contents";
 
 const supportLangs = ["ko-kr"];
 
@@ -32,7 +33,7 @@ function App() {
 
   useEffect(() => {
     if (!hash && lang) {
-      setHash(`intro/hello-world`);
+      setHash(`hello-world/intro`);
     }
   }, [hash, lang]);
 
@@ -52,18 +53,21 @@ function App() {
   }
 
   return (
-      <div className={'h-screen'}>
-        <NavBar/>
-        <div className={"container mx-auto h-full-without-nav"}>
-          <div className="grid grid-cols-3 h-full">
-            <div className="p-4 prose overflow-y-scroll">
-              <Markdown plugins={[gfm]}>{markdown.value}</Markdown>
-            </div>
-            <div className="p-2 col-span-2 h-auto overflow-y-auto	">
-              <CodeEditor initialCode={code.value ?? ""}/>
-            </div>
+    <div className={"h-screen"}>
+      <NavBar />
+      <div className={"mx-auto h-full-without-nav"}>
+        <div className="grid grid-cols-12 h-full">
+          <div className="p-2 col-span-2 overflow-y-scroll">
+            <TableOfContents lang={lang} />
+          </div>
+          <div className="p-4 col-span-4 prose overflow-y-scroll">
+            <Markdown plugins={[gfm]}>{markdown.value}</Markdown>
+          </div>
+          <div className="p-2 col-span-6 h-auto overflow-y-auto	">
+            <CodeEditor initialCode={code.value ?? ""} />
           </div>
         </div>
+      </div>
     </div>
   );
 }

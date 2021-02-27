@@ -1,5 +1,5 @@
 {
-  "intro": {
+  "hello-world": {
     "title": "안녕 세계!",
     "children": [],
     "next": "data-types"
